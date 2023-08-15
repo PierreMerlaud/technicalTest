@@ -15,24 +15,43 @@ a {
   box-sizing: border-box;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+.mainDiv {
+  margin: 2rem;
 }
 
-h1,
-h2,
-p,
-ul {
-  margin: 0;
+.container {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-ul {
-  padding: 0;
-  list-style: none;
+.logo {
+  height: 1em;
 }
 
-button {
-  padding: 0.5rem 1rem;
-  font-weight: bold;
+.styleList {
+  border: 0.2rem solid red;
+}
+
+.bandList {
+  background-color: rgb(108, 251, 251);
+}
+
+h1 {
+  animation: blinkBorder 0.3s infinite alternate;
+  padding: 0.5rem;
+  margin: 2rem;
+  text-align: center;
+}
+
+@keyframes blinkBorder {
+  from {
+    border: 0.2rem dotted #06ed66;
+  }
+  to {
+    border: 0.2rem dotted #ffffff;
+  }
 }
