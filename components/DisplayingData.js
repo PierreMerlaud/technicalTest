@@ -11,15 +11,34 @@ export default function BandsList({}) {
   const [selectedYear, setSelectedYear] = useState("");
 
   useEffect(() => {
-    // Sort band_name in alphabetical order
-    const sortedBands = bandsData.sort((a, b) => {
-      const bandNameA = (a.band_name || "").trim().toLowerCase();
-      const bandNameB = (b.band_name || "").trim().toLowerCase();
+    // Create a new array to store bands without duplicates
+    const uniqueBands = [];
 
-      if (bandNameA < bandNameB) {
+    for (const band of bandsData) {
+      const bandName = (band.band_name || "").trim().toLowerCase();
+      let alreadyAdded = false;
+
+      for (const uniqueBand of uniqueBands) {
+        const uniqueBandName = (uniqueBand.band_name || "")
+          .trim()
+          .toLowerCase();
+        if (bandName === uniqueBandName) {
+          alreadyAdded = true;
+          break;
+        }
+      }
+
+      if (!alreadyAdded) {
+        uniqueBands.push(band);
+      }
+    }
+    console.log("uniqueBands", uniqueBands);
+    // Sort band_name in alphabetical order
+    const sortedBands = uniqueBands.sort((a, b) => {
+      if (a.band_name < b.band_name) {
         return -1;
       }
-      if (bandNameA > bandNameB) {
+      if (a.band_name > b.band_name) {
         return 1;
       }
       return 0;
@@ -45,7 +64,6 @@ export default function BandsList({}) {
     };
 
     const allStyles = getAllStyles(bandsData);
-    console.log("allStyles", allStyles);
 
     // Sort styles alphabetically
     const sortedStyles = allStyles.sort();
@@ -91,7 +109,6 @@ export default function BandsList({}) {
     };
 
     const allYears = getAllYears(bandsData);
-    console.log("allYears", allYears);
 
     // Sort years
     const sortedYears = allYears.sort();
