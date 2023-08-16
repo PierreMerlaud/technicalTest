@@ -36,6 +36,14 @@ a {
   border: 0.2rem solid red;
 }
 
+.originList {
+  border: 0.2rem solid greenyellow;
+}
+
+.yearList {
+  border: 0.2rem solid pink;
+}
+
 .bandList {
   background-color: rgb(108, 251, 251);
 }

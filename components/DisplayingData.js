@@ -22,6 +22,7 @@ export default function BandsList({}) {
         const uniqueBandName = (uniqueBand.band_name || "")
           .trim()
           .toLowerCase();
+
         if (bandName === uniqueBandName) {
           alreadyAdded = true;
           break;
