@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import injestBandName from "./InjestBandName";
 import bandsData from "../public/data/metal_bands_2017.json";
 
 export default function BandsList({}) {
@@ -11,42 +12,7 @@ export default function BandsList({}) {
   const [selectedYear, setSelectedYear] = useState("");
 
   useEffect(() => {
-    // Create a new array to store bands without duplicates
-    const uniqueBands = [];
-
-    for (const band of bandsData) {
-      const bandName = (band.band_name || "").trim().toLowerCase();
-      let alreadyAdded = false;
-
-      for (const uniqueBand of uniqueBands) {
-        const uniqueBandName = (uniqueBand.band_name || "")
-          .trim()
-          .toLowerCase();
-
-        if (bandName === uniqueBandName) {
-          alreadyAdded = true;
-          break;
-        }
-      }
-
-      if (!alreadyAdded) {
-        uniqueBands.push(band);
-      }
-    }
-    console.log("uniqueBands", uniqueBands);
-    // Sort band_name in alphabetical order
-    const sortedBands = uniqueBands.sort((a, b) => {
-      if (a.band_name < b.band_name) {
-        return -1;
-      }
-      if (a.band_name > b.band_name) {
-        return 1;
-      }
-      return 0;
-    });
-    console.log("sortedBands", sortedBands);
-
-    setBands(sortedBands);
+    setBands(injestBandName(bandsData));
 
     // Extract all styles
     const getAllStyles = (data) => {
