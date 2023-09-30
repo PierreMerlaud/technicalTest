@@ -1,4 +1,4 @@
-Technical Test Stokelp.
+Technical Test Stokelp. (to be continued)
 
 # Metal groups visualization
 ## Technical test
